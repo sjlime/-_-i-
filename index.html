@@ -1,0 +1,170 @@
+<!DOCTYPE html> <!-- 2024.11.24 수정됨. -->
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNUT 렌탈</title>
+    <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 네비게이션 바 스타일 구현 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #DB4455;
+            /* 빨간색 */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo {
+            flex: 1;
+            /* 왼쪽에 고정 */
+        }
+
+        .navbar .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            justify-content: flex-start;
+            /* 왼쪽 정렬 */
+            flex: 2;
+            margin-left: 130px;
+            /* 버튼들을 왼쪽으로 좀 더 밀어냄 */
+        }
+
+        .navbar .nav-links button {
+            margin: 0 10px;
+            background: none;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            border: none;
+        }
+
+        .navbar .nav-links button:hover {
+            background-color: white;
+            color: #ff4d4d;
+            /* 버튼 hover 시 배경색과 글자색 반전 */
+        }
+
+
+
+        /*여기서부터 중복되지않음*/
+
+
+        /* 메인 콘텐츠 */
+        .home-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .home-content .intro {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .home-content .intro img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .home-content .intro-text {
+            margin-top: 20px;
+        }
+
+        .home-content .intro-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .home-content .intro-text p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+         /* footer */
+         footer {
+            text-align: center;
+            background-color: #DB4455;
+            color: white;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">KNUT렌탈</a>
+        </div>
+        <div class="nav-links">
+            <button onclick="window.location.href='Products.html'">제품 대여 서비스</button>
+            <button onclick="window.location.href=('Talent.html')">재능 대여 서비스</button>
+            <button onclick="navigateTo('Qna.html')">QNA</button>
+            <button onclick="window.location.href='About.html'">소개</button>
+            <button onclick="window.location.href='Login.html'">로그인/회원가입</button>
+        </div>
+    </nav>
+
+    <!-- 홈페이지 콘텐츠 -->
+    <main class="home-content">
+        <section class="intro">
+
+            <!-- 첫번째 이미지. 1600X1200 21인치입니다. 이미지 호스팅하였습니다.-->
+            <img src=https://i.postimg.cc/MHNP5WB5/image.jpg alt="Main Banner" class="main-banner">
+            <div class="intro-text">
+                <h1>일상의 필요와 즐거움,
+                    <br>
+                    KNUT렌탈이 함께합니다.
+                </h1>
+                <br>
+                <p>교통대학교 주변의 필요한 물건들을 쉽고 빠르게 대여하세요!</p>
+                <p> 저렴하고 안전한 서비스로,  여러분의 일상에 작은 편리함을 더합니다.</p>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 KNUT 렌탈. All rights reserved.</p>
+    </footer>
+
+    <!-- 자바스크립트 -->
+    <script>
+        function navigateTo(url) {
+            alert(url + " 페이지로 이동 준비 중임/ 아직 구현중,,, (추후 연결)");
+            // window.location.href = url; // 실제 연결 시 이 주석을 제거하세요.
+        }
+    </script>
+</body>
+
+</html>
