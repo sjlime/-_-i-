@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문의게시판</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        #inq {
+            margin-bottom: 20px;
+        }
+        #inq p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="text-center">
+            <!-- <h1>사이트 헤더</h1>
+            <hr /> -->
+        </header>
+
+        <!-- 문의게시판 제목 -->
+        <div id="inq" class="text-center">
+            <p class="h4">문의게시판 TEST</p>
+            <p class="h2">ㅡ</p>
+        </div>
+
+        <!-- 글쓰기 버튼 -->
+        <ul class="nav nav-pills justify-content-end mb-3">
+            <li class="nav-item">
+                <a class="btn btn-primary" href="write.html">글쓰기</a>
+            </li>
+        </ul>
+
+        <!-- 게시판 테이블 -->
+        <table class="table table-hover">
+            <thead class="thead-light text-center">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">날짜</th>
+                <th scope="col">답변여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 예제 데이터 -->
+            <tr class="text-center">
+                <th scope="row">1</th>
+                <td><a href="content.html">렌탈 서비스 관련 문의</a></td>
+                <td>홍길동</td>
+                <td>렌탈 관련</td>
+                <td>2024-11-21</td>
+                <td>미답변</td>
+            </tr>
+            <tr class="text-center">
+                <th scope="row">2</th>
+                <td><a href="content.html">결제 오류 발생 문의</a></td>
+                <td>김철수</td>
+                <td>결제 관련</td>
+                <td>2024-11-20</td>
+                <td>답변완료</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 페이지네이션 -->
+        <nav id="pagination" class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="?page=1">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=2">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=2" aria-label="Next">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=10" aria-label="Last">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 푸터 -->
+        <footer class="text-center mt-5">
+            <a href="abc"><p>공지사항</p></a>
+        </footer>
+    </div>
+</body>
+</html>
