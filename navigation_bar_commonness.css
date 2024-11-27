@@ -1,0 +1,141 @@
+ /* 미디어 쿼리 */
+ @media (max-width: 600px) {
+     .login_boxes {
+         width: 90%;
+     }
+
+     input {
+         font-size: 14px;
+     }
+ }
+
+ /* 기본 스타일 */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: Arial, sans-serif;
+     line-height: 1.6;
+     background-color: #f5f5f5;
+     margin: 0;
+     padding: 0;
+ }
+
+ /* 네비게이션 바 스타일 구현 */
+ .navbar {
+     display: flex;
+     align-items: center;
+     background-color: #DB4455;
+     /* 빨간색 */
+     color: white;
+     padding: 10px 20px;
+ }
+
+ .navbar .logo {
+     flex: 1;
+     /* 왼쪽에 고정 */
+ }
+
+ .navbar .logo a {
+     color: white;
+     text-decoration: none;
+     font-size: 25px;
+     font-weight: bold;
+ }
+
+ .navbar .nav-links {
+     display: flex;
+     justify-content: flex-start;
+     /* 왼쪽 정렬 */
+     flex: 2;
+     margin-left: 300px;
+     /* 버튼들을 왼쪽으로 좀 더 밀어냄 */
+ }
+
+ .navbar .nav-links button {
+     margin: 0 10px;
+     background: none;
+     color: white;
+     padding: 5px 15px;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 15px;
+     border: none;
+ }
+
+ .navbar .nav-links button:hover {
+     background-color: white;
+     color: #ff4d4d;
+     /* 버튼 hover 시 배경색과 글자색 반전 */
+ }
+
+ /* 로그인/회원가입 버튼 차별화 */
+ .navbar .login-button {
+     flex: 1;
+     /* 오른쪽으로 이동 */
+     text-align: right;
+     margin-right: -16px;
+ }
+
+ .navbar .login-button button {
+     background-color: #ffcc00;
+     /* 다른 배경색 */
+     color: #333;
+     font-weight: bold;
+     border: none;
+     padding: 5px 15px;
+     border-radius: 5px;
+     font-size: 17px;
+     cursor: pointer;
+ }
+
+ .navbar .login-button button:hover {
+     background-color: #ff9900;
+     color: white;
+ }
+
+ /* 메인 콘텐츠 */
+ .home-content {
+     text-align: center;
+     padding: 40px 20px;
+ }
+
+ .home-content .intro {
+     max-width: 800px;
+     margin: 0 auto;
+ }
+
+ .home-content .intro img {
+     width: 100%;
+     height: auto;
+     border-radius: 10px;
+ }
+
+ .home-content .intro-text {
+     margin-top: 20px;
+ }
+
+ .home-content .intro-text h1 {
+     font-size: 2.5rem;
+     margin-bottom: 10px;
+     color: #333;
+ }
+
+ .home-content .intro-text p {
+     font-size: 1.2rem;
+     color: #555;
+ }
+
+ /* footer */
+ footer {
+     text-align: center;
+     background-color: #DB4455;
+     color: white;
+     padding: 3px;
+     position: fixed;
+     bottom: 0;
+     width: 100%;
+ }
