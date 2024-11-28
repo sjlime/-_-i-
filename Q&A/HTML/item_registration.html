@@ -30,26 +30,12 @@
               <textarea id="description" name="description" rows=11 cols=95 placeholder="상품에 대한 설명을 입력하세요" required></textarea>
           </div>
 
-            <!-- 비용 유형 선택 -->
-            <div class="form-group">
-                <label for="cost-type">비용 유형</label>
-                <select id="cost-type" name="costType" required>
-                    <option value="">선택하세요</option>
-                    <option value="hourly">시간당 비용</option>
-                    <option value="daily">일당 비용</option>
-                </select>
-            </div>
-
-            <!-- 시간당 비용 -->
-            <div class="form-group hidden" id="hourly-cost-group">
-                <label for="hourly-cost">시간당 비용 (원)</label>
-                <input type="number" id="hourly-cost" name="hourlyCost" placeholder="시간당 비용을 입력하세요">
-            </div>
-
+            <!-- 시간 당 비용 삭제 -->
+            
             <!-- 일당 비용 -->
-            <div class="form-group hidden" id="daily-cost-group">
-                <label for="daily-cost">일당 비용 (원)</label>
-                <input type="number" id="daily-cost" name="dailyCost" placeholder="일당 비용을 입력하세요">
+            <div class="form-group" id="daily-cost-group">
+                <label for="daily-cost">일당 렌탈 비용 (원)</label>
+                <input type="number" id="daily-cost" name="dailyCost" placeholder="일당 렌탈 비용을 입력하세요">
             </div>
 
             <!-- 버튼 그룹 -->
