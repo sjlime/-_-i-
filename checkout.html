@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNUT 렌탈 - 결제</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .checkout-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .order-summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-summary table th,
+        .order-summary table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .payment-options label {
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .checkout-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* "이전으로 돌아가기" 버튼 스타일 */
+        .back-btn-container {
+            text-align: center;
+            /* 버튼을 가운데 정렬 */
+            margin-top: 20px;
+            /* 버튼 위쪽 여백 */
+        }
+
+        .back-btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background-color: #e33e3e;
+        }
+
+        /* 결제 완료 메시지 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .modal-content h2 {
+            font-size: 24px;
+            color: #4caf50;
+        }
+
+        .modal-content p {
+            margin: 10px 0;
+        }
+
+        .close-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .close-btn:hover {
+            background-color: #e33e3e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-container">
+        <h2>주문 확인</h2>
+        <div class="order-summary">
+            <table>
+                <thead>
+                    <tr>
+                        <th>제품명</th>
+                        <th>대여 기간</th>
+                        <th>1일당 가격</th>
+                        <th>총 비용</th>
+                    </tr>
+                </thead>
+                <tbody id="order-items">
+                    <!-- 주문 항목 추가 -->
+                </tbody>
+            </table>
+            <div id="order-total" style="margin-top: 20px; font-size: 18px; text-align: right;"></div>
+        </div>
+        <div class="payment-options">
+            <label><input type="radio" name="payment-method" value="신용카드"> 신용카드</label>
+            <label><input type="radio" name="payment-method" value="계좌이체"> 계좌이체</label>
+            <label><input type="radio" name="payment-method" value="카카오페이"> 카카오페이</label>
+            <label><input type="radio" name="payment-method" value="삼성페이"> 삼성페이</label>
+            <label><input type="radio" name="payment-method" value="무이자 통장 결제"> 무이자 통장 결제</label>
+        </div>
+        <button class="checkout-btn" onclick="processPayment()">결제하기</button>
+    </div>
+    <div class="back-btn-container">
+        <button class="back-btn" onclick="goBack()">이전으로 돌아가기</button>
+    </div>
+
+    <!-- 모달 창 -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h2>결제가 완료되었습니다!</h2>
+            <p id="payment-details"></p>
+            <button class="close-btn" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const orderItemsContainer = document.getElementById('order-items');
+        const orderTotal = document.getElementById('order-total');
+
+        let total = 0;
+        cart.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.productName}</td>
+                <td>${item.rentalDays}일</td>
+                <td>₩${item.price.toLocaleString()}</td>
+                <td>₩${item.totalCost.toLocaleString()}</td>
+            `;
+            orderItemsContainer.appendChild(row);
+            total += item.totalCost;
+        });
+        orderTotal.textContent = `총 합계: ₩${total.toLocaleString()}`;
+
+        function processPayment() {
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            if (!paymentMethod) {
+                alert('결제 방법을 선택해주세요.');
+                return;
+            }
+            // 결제 완료된 상품 목록을 localStorage에 저장
+            let purchasedItems = JSON.parse(localStorage.getItem('purchasedItems')) || [];
+            purchasedItems = purchasedItems.concat(cart.map(item => item.productName));
+            localStorage.setItem('purchasedItems', JSON.stringify(purchasedItems));
+
+            const modal = document.getElementById('success-modal');
+            const details = document.getElementById('payment-details');
+            details.textContent = `결제 방법: ${paymentMethod.value}, 총 금액: ₩${total.toLocaleString()}`;
+            modal.style.display = 'flex';
+            localStorage.removeItem('cart');
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+            window.location.href = 'products.html'; // 홈으로 이동
+        }
+
+        function goBack() {
+            window.location.href = 'products.html'; // 이전 페이지로 이동
+        }
+    </script>
+</body>
+
+</html>
