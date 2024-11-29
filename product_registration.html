@@ -18,38 +18,24 @@
                 <input type="file" id="image" name="image" accept="image/*" required>
             </div>
 
-            <!-- 상품 이름 -->
+            <!-- 글 제목 -->
             <div class="form-group">
-                <label for="title">상품 이름</label>
-                <input type="text" id="title" name="title" placeholder="상품 이름을 입력하세요" required>
+                <label for="title">글 제목</label>
+                <input type="text" id="title" name="title" placeholder="상품 제목을 입력하세요" required>
             </div>
 
-            <!-- 상품 설명 -->
+            <!-- 글 내용 -->
             <div class="form-group">
-              <label for="description">상품 설명</label>
+              <label for="description">글 내용</label>
               <textarea id="description" name="description" rows=11 cols=95 placeholder="상품에 대한 설명을 입력하세요" required></textarea>
           </div>
 
-            <!-- 비용 유형 선택 -->
-            <div class="form-group">
-                <label for="cost-type">비용 유형</label>
-                <select id="cost-type" name="costType" required>
-                    <option value="">선택하세요</option>
-                    <option value="hourly">시간당 비용</option>
-                    <option value="daily">일당 비용</option>
-                </select>
-            </div>
-
-            <!-- 시간당 비용 -->
-            <div class="form-group hidden" id="hourly-cost-group">
-                <label for="hourly-cost">시간당 비용 (원)</label>
-                <input type="number" id="hourly-cost" name="hourlyCost" placeholder="시간당 비용을 입력하세요">
-            </div>
-
+            <!-- 시간 당 비용 삭제 -->
+            
             <!-- 일당 비용 -->
-            <div class="form-group hidden" id="daily-cost-group">
-                <label for="daily-cost">일당 비용 (원)</label>
-                <input type="number" id="daily-cost" name="dailyCost" placeholder="일당 비용을 입력하세요">
+            <div class="form-group" id="daily-cost-group">
+                <label for="daily-cost">일당 렌탈 비용 (원)</label>
+                <input type="number" id="daily-cost" name="dailyCost" placeholder="일당 렌탈 비용을 입력하세요">
             </div>
 
             <!-- 버튼 그룹 -->
@@ -59,8 +45,7 @@
             </div>
         </form>
         <div class="footer">
-            <p><a href="products.html">상품 목록</a>으로 돌아가기</p>
-
+            <p><a href="/products">상품 목록</a>으로 돌아가기</p>
         </div>
     </div>
 
