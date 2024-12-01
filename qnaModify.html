@@ -5,22 +5,23 @@
 	<head>
     <title>내용 수정</title>
 		<meta charset="UTF-8">
-		<link href="css/rtcss.css" rel="stylesheet" type="text/css" />
+		<link href="rtcss.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div class="container">
 	<h1>레코드 수정</h1>
 		<p align="right"><a href="logout.do">로그아웃</a></p>
-	<form method="post" name="" th:action="@{'/QnA/' + ${QnADTO.id}}" method="post">
+	</table>
+	<form method="post name="upadte" action="modifyBoard.do?seq=${board.seq }">
 	<table border="1">
 		<tr>
 			<td class="left">번호</td>
-			<td class="right" th:value=${QnADTO.id}></td>
+			<td class="right"></td>
 		</tr>
 		<tr>
 			<td class="left">제목</td>
 			<td class="right">
-				<input type=text name"title" size=50 th:value="${QnADTO.title}">
+				<input type=text name"title" size=50 value="">
 			</td>
 		</tr>
     <tr>
@@ -35,16 +36,17 @@
               <option value="other">기타</option>
           </select>
       </div>
+
 			</td>
 		</tr>
 		<tr>
 			<td class="left">작성자</td>
-			<td class="right" th:value=${QnADTO.author}></td>
+			<td class="right"></td>
 		</tr>
 		<tr>
 			<td class="left">내용</td>
 			<td class="right">
-				<textarea rows=11 cols=85 name="content" th:text=${QnADTO.content}></textarea>
+				<textarea rows=11 cols=85 name="content"></textarea>
 			</td>
 		</tr>
 	</table>
@@ -53,14 +55,14 @@
 			<td align="center">
 				<input type="submit" value="저장">&nbsp;&nbsp;
 				<input type="reset" value="취소"
-              id="modify-cancel-button""></button>
+              id="modify-cancel-button"></button>
 			</td>
 		</tr>
 	</table>
 	</form>
   </div>
   <script>
-  <!-- 취소 버튼 경고창 -->
+  // 취소 버튼 경고창
   const modifycancelButton = document.getElementById('modify-cancel-button');
   modifycancelButton.addEventListener('click', function () {
       const confirmCancel = confirm('정말 취소하시겠습니까?');
