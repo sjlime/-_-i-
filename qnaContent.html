@@ -3,22 +3,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/rtcss.css" rel="stylesheet" type="text/css" />
+<link href="rtcss.css" rel="stylesheet" type="text/css" />
 <title>문의 내용</title>
 </head>
 <body>
 	<div class="container">
     <h1>문의 내용</h1>
       <p align="right"><a href="logout.do">로그아웃</a></p>
-    <form method="post name=" th:action="@{'/QnA/content/' + ${QnADTO.id}}" method="post">
+    </table>
+    <form method="post name="upadte" action="modifyBoard.do?seq=${board.seq }">
     <table border="1">
       <tr>
         <td class="left">번호</td>
-        <td class="right" th:value=${QnADTO.id}></td>
+        <td class="right"></td>
       </tr>
       <tr>
         <td class="left">제목</td>
-        <td class="right" th:value=${QnADTO.title}></td>         
+        <td class="right"></td>         
       </tr>
       <tr>
         <td class="left">카테고리</td>
@@ -26,12 +27,12 @@
       </tr>
       <tr>
         <td class="left">작성자</td>
-        <td class="right" th:value=${QnADTO.author}></td>
+        <td class="right"></td>
       </tr>
       <tr>
         <td class="left">내용</td>
 			<td class="right">
-				<p style="white-space: pre-line;" th:value=${QnADTO.content}></p>
+				<p style="white-space: pre-line;"></p>
 			</td>
       </tr>
     </table>
@@ -57,7 +58,7 @@
             const confirmdelete = confirm('정말 삭제하시겠습니까?');
             if (confirmdelete) {
               alert("삭제되었습니다.");
-              <a th:href="@{/QnA/delete(id=${QnAEntity.id})}"></a>
+              location.href = "qnaMain.html";
             }
         });
     </script>
